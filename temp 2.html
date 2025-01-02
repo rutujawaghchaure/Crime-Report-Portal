@@ -44,6 +44,17 @@
         <label for="crime-location">Location of the Crime (Optional):</label>
         <input type="text" id="crime-location" name="crime-location" required>
 
+        <label for="crime-type">Select Type of Crime:</label>
+        <select id="crime-type" name="crime-type" required>
+          <option value="" disabled selected>Select Crime</option>
+          <option value="theft">Theft</option>
+          <option value="burglary">Burglary</option>
+          <option value="assault">Assault</option>
+          <option value="fraud">Fraud</option>
+          <option value="vandalism">Vandalism</option>
+          <option value="other">Other</option>
+        </select>
+
         <label for="evidence-upload">Upload Evidence (Images):</label>
         <input type="file" id="evidence-upload" name="evidence-upload" accept="image/*">
 
@@ -143,6 +154,7 @@
       const crimeDescription = document.getElementById('crime-description').value;
       const crimeLocation = document.getElementById('crime-location').value;
       const evidenceFiles = document.getElementById('evidence-upload').files;
+      const crimetype = document.getElementById('crime-type').value;
 
       // Evidence URLs
       const evidenceUrls = [];
@@ -158,6 +170,7 @@
         crime_location: crimeLocation,
         crimeLocation_link: location_of_crime,
         evidence_urls: evidenceUrls,
+        crime_type:crimetype,
         timestamp: serverTimestamp(),
 
       };
