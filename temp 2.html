@@ -55,11 +55,11 @@
           <option value="other">Other</option>
         </select>
 
-        <label for="evidence-upload">Upload Evidence (Images):</label>
+        <label for="evidence-upload">Upload Evidence (Images):     <button type="button" id="get-location-btn">Get Current Location</button></label>
         <input type="file" id="evidence-upload" name="evidence-upload" accept="image/*">
 
         <!-- Button to capture current location -->
-        <button type="button" id="get-location-btn">Get Current Location</button>
+        
         
         <!-- Display the generated link for the location -->
         <div id="location-link-container" style="margin-top: 10px;"></div>
@@ -180,7 +180,7 @@
         alert("Crime Report Submitted Successfully!");
 
         // Optionally, generate PDF report
-        // generatePDF(crimeReportData);
+        generatePDF(crimeReportData);
       } catch (error) {
         console.error("Error adding crime report: ", error);
         alert("Error submitting crime report. Please try again.");
@@ -210,6 +210,12 @@
       y += 10;
       doc.text(`Crime Location: ${crimeReportData.crime_location}`, 14, y);
       y += 10;
+      doc.text(`Crime Location Link: ${crimeReportData.crimeLocation_link}   : copy this link and open it.`, 14, y);
+      y += 10;
+      doc.text(`Crime type: ${crimeReportData.crime_type}`, 14, y);
+      y += 10; 
+      doc.text(`Time of Report: ${crimeReportData.timestamp}`, 14, y);
+      y += 10;      
       doc.text(`Evidence URLs: ${crimeReportData.evidence_urls.join(", ")}`, 14, y);
       y += 10;
 
